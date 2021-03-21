@@ -1,0 +1,33 @@
+name: tp1a57_workflow
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+    - uses: actions/checkout@v2
+ 
+    
+    - name: "Entrainer le model"
+      env:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
+      run: |
+        # Le workflow sera ici 
+        pip install -r requirements.txt
+     
+        
+        # Pull dataset with DVC 
+        dvc pull train
+          
+        # Reproduce pipeline if any changes detected in dependencies
+        dvc repro 
+        dvc push  
+        # Use DVC metrics diff to compare metrics to master
+        git fetch --prune --unshallow
+        # Ecrire le rappoart CML
+        dvc metrics diff --show-md master >> report.md
+        cat metrics.txt >> report.md
+        cml-send-comment report.md
+        ls -l
