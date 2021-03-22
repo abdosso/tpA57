@@ -1,0 +1,4 @@
+[core]
+    remote = monremote
+['remote "monremote"']
+    url = ./dvcstorage
