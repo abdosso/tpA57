@@ -1,4 +1,0 @@
-[core]
-    remote = remotelocal
-['remote "remotelocal"']
-    url = /donnee/local
