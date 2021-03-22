@@ -1,4 +1,4 @@
 [core]
     remote = remotelocal
 ['remote "remotelocal"']
-    url = /donnee/dvc-storage
+    url = /donnee/local
