@@ -1,4 +1,1 @@
-[core]
-    remote = mesdonnees
-['remote "mesdonnees"']
-    url = azure://a57storage
+
