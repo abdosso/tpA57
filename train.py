@@ -176,7 +176,7 @@ with open("metrics.txt", 'w') as outfile:
 # In[73]:
 #Sauvegarder le modele
 import pickle
-pickle.dump(lm,open("./home/model.pky",'wb')) 
+pickle.dump(lm,open("model.pky",'wb')) 
 
 #Référence: The Elements of Statistical Learning - Hastie, Tibshirani and Friedman, voir https://web.stanford.edu/~hastie/ElemStatLearn/
 
